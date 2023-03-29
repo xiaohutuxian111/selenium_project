@@ -9,11 +9,11 @@ from page.BasePage import BasePage
 
 class LoginPage(BasePage):
     # 读取配置元素
-    frame = BasePage.cf.getLocatorsOrAccount('LoginPageElements','frame')
-    useranme = BasePage.cf.getLocatorsOrAccount('LoginPageElements','username')
-    password = BasePage.cf.getLocatorsOrAccount('LoginPageElements','password')
-    loginBtn = BasePage.cf.getLocatorsOrAccount('LoginPageElements','loginBtn')
-    ferrorHead = BasePage.cf.getLocatorsOrAccount('LoginPageElements','ferrorHead')
+    frame = BasePage.cf.getLocatorsOrAccount('LoginPageElements', 'frame')
+    useranme = BasePage.cf.getLocatorsOrAccount('LoginPageElements', 'username')
+    password = BasePage.cf.getLocatorsOrAccount('LoginPageElements', 'password')
+    loginBtn = BasePage.cf.getLocatorsOrAccount('LoginPageElements', 'loginBtn')
+    ferrorHead = BasePage.cf.getLocatorsOrAccount('LoginPageElements', 'ferrorHead')
 
     def login(self, userName, passWord):
         """登录"""
@@ -34,8 +34,14 @@ class LoginPage(BasePage):
         print('info:asset "{}" == "{}"'.format(text, expected))
         assert text == expected, "{}!={}".format(text, expected)
 
-if __name__ == '__main__':
-    pass
 
+if __name__ == '__main__':
+    from selenium import webdriver
+    driver = webdriver.Firefox()
+    login = LoginPage(driver,30)
+    username = "defoliationfly@126.com"
+    password = ""
+    login.login(username, password)
+    login.assertTextEqString("请输入密码")
 
 
