@@ -229,14 +229,14 @@ class BasePage(object):
 
 if __name__ == '__main__':
     driver = webdriver.Firefox()
-    frame = ('xpath', '//*[@id="loginDiv"]//iframe[0]')
+    frame = ('xpath', '//*[@id="loginDiv"]//iframe')
     wait = BasePage(driver)
     driver.get('https://mail.126.com/')
     wait.switchToFrame(*frame)
-    username = wait.findElement('xpath', '//*[@id="login-form"]/div[1]/div[1]/div[2]/input')
-    username.send_keys('23982310@126.com')
-    if wait.isElementExsit('xpath', '//*[@id="login-form"]//div[1]//div[3]//div[2]'):
-        wait.findElement("xpath", '//*[@id="login-form"]//div[1]//div[3]//div[2]')
-    wait.click('xpath', '//*[@id="dologin"]').send_keys("12112asdsacdzcxz@")
+    username = wait.findElement('xpath', '//input[@data-placeholder="邮箱帐号或手机号码"]')
+    username.send_keys('****')
+    if wait.isElementExsit('xpath', '//input[@id="pwdtext"]'):
+        wait.findElement("xpath", '//input[@id="pwdtext"]').send_keys("*****")
+    wait.click('xpath', '//*[@id="dologin"]')
 
 
