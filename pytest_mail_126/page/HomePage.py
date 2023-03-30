@@ -21,7 +21,7 @@ class HomePage(BasePage):
         # 邮箱首页选择菜单
         if Menu == "mailList":
             self.click(*HomePage.mailList)
-        elif Menu == "homePahe":
+        elif Menu == "homePage":
             self.click(*HomePage.homePage)
         elif Menu == "applicationCenter":
             self.click(*HomePage.applicationCenter)
@@ -43,7 +43,8 @@ if __name__ == '__main__':
     from page.LoginPage import LoginPage
     driver = webdriver.Firefox()
     login = LoginPage(driver)
-    login.login("账号",'密码')
-
+    username = ""
+    password = ""
+    login.login(username,password)
     home = HomePage(driver)
-    home.selectMenu()
+    home.selectMenu("applicationCenter")

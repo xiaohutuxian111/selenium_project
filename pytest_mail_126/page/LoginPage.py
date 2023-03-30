@@ -4,6 +4,8 @@
 @Time：2023/3/28 14:49
 @Description：登录功能
 """
+import time
+
 from page.BasePage import BasePage
 
 
@@ -24,6 +26,8 @@ class LoginPage(BasePage):
         self.clear(*LoginPage.password)
         self.sendKeys(*LoginPage.password, passWord)
         self.click(*LoginPage.loginBtn)
+        print("-------当出现人机验证--------")
+        time.sleep(10)
         self.switchToDefaultFrame()
 
     def assertTextEqString(self, expected, name=None):
@@ -39,7 +43,7 @@ if __name__ == '__main__':
     from selenium import webdriver
     driver = webdriver.Firefox()
     login = LoginPage(driver,30)
-    username = "defoliationfly@126.com"
+    username = ""
     password = ""
     login.login(username, password)
     login.assertTextEqString("请输入密码")
