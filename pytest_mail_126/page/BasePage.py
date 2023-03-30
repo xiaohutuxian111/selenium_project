@@ -23,8 +23,8 @@ class BasePage(object):
 
     def __init__(self, driver, outTime=20):
         self.byDic = {
-            'id': "By.ID",
-            'name': "By.NAME",
+            'id': "id",
+            'name': "name",
             'class_name': "css selector",
             'xpath': "xpath",
             'link_text': "link text"
