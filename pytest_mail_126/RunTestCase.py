@@ -6,24 +6,29 @@
 """
 
 import sys
+import pytest
+
+
+from util.sendMailWithReport import SendMailWithReport
 
 sys.path.append('.')
-from config.conf import *
-from util.sendMailWithReport import SendMailWithReport
+from config.conf import ROOT_DIR, HTML_NAME
 
 
 def main():
     # 判断项目的根目录是否在sys.path中，没有就参加
-    if projectDir not in sys.path:
-        sys.path.append(projectDir)
+    if ROOT_DIR not in sys.path:
+        sys.path.append(ROOT_DIR)
     # 执行用例
-    os.system(args)
+    # ["-v", "-m", "demo", "--reruns", "2", "--reruns-delay", "5", "--alluredir=../OutPuts/allure-results"]
+    args = ['--reruns', '2', '--html=' + './report/' + HTML_NAME]
+    pytest.main(args)
     # 发送邮件
-    SendMailWithReport.send_mail(
-        smtpServer, fromUser, fromPassWord,
-        toUser, subject, contents,
-        htmlName
-    )
+    # SendMailWithReport.send_mail(
+    #     smtpServer, fromUser, fromPassWord,
+    #     toUser, subject, contents,
+    #     htmlName
+    # )
 
 
 if __name__ == '__main__':

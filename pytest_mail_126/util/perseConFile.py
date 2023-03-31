@@ -6,12 +6,12 @@
 """
 
 import configparser
-from config.conf import configDir
+from config.conf import CONF_PATH
 
 
 class ParseConFile(object):
     def __init__(self):
-        self.file = configDir
+        self.file = CONF_PATH
         self.conf = configparser.ConfigParser()
         self.conf.read(self.file, encoding='utf-8')
 

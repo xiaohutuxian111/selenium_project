@@ -5,14 +5,14 @@
 @Description：
 """
 from openpyxl import load_workbook
-from config.conf import excel_path
+from config.conf import DATA_PATH
 
 
 class ParseExcel():
 
     def __init__(self):
-        self.wk = load_workbook(excel_path)
-        self.excelFile = excel_path
+        self.wk = load_workbook(DATA_PATH)
+        self.excelFile = DATA_PATH
 
     # 获取sheet对象
     def getSheetByName(self, sheetName):
