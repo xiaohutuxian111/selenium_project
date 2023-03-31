@@ -147,3 +147,4 @@ cython_debug/
 !/pytest_mail_126/data/send_mail_data.py
 !/pytest_mail_126/data/contact_data.py
 
+!/pytest_mail_126/report/

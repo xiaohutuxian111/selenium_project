@@ -19,7 +19,7 @@ class TestLogin(object):
         login_page = open_url
         login_page.login(username, password)
         login_page.switch_default_frame()
-        actual = login_page.get_login_success_acount()
+        actual = login_page.get_login_success()
         assert expect in actual, "登录成功,断言失败"
 
     @pytest.mark.parametrize('username,password,expect', login_data.login_fail_data)

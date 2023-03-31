@@ -13,8 +13,8 @@ from page.PageObject.SendMailPage import SendMailPage
 from util.perseConFile import ParseConFile
 
 do_conf = ParseConFile()
-username = LoginPage.cf.getLocatorsOrAccount("126LoginAccount", 'username')
-password = LoginPage.cf.getLocatorsOrAccount("126LoginAccount", 'password')
+username = do_conf.getLocatorsOrAccount("126LoginAccount", 'username')
+password = do_conf.getLocatorsOrAccount("126LoginAccount", 'password')
 
 
 @pytest.fixture(scope='class')
@@ -41,7 +41,7 @@ def login(ini_pages):
     driver, login_page, home_page, contact_page, send_mail_page = ini_pages
     print("--------------------start login------------")
     login_page.login(username, password)
-    login_page.switchToDefaultFrame()
+    login_page.switch_to_default_frame()
     yield login_page, home_page, contact_page, send_mail_page
     print("-------------------end login-------------------")
     driver.delete_all_cookies()

@@ -9,7 +9,7 @@ import win32con
 import win32clipboard as WC
 
 
-class ClipBoard():
+class ClipBoard(object):
 
     @staticmethod
     def getText():

@@ -22,14 +22,14 @@ class SendMailData(object):
             "281754043@qq.com",
             "测试发送带附件的邮件",
             "测试发送带附件的邮件",
-            "D:\\PytestAutoTestFrameWork\\data\\attachment",
+            "D:\\code\\pythonCode\\selenium_project\\pytest_mail_126\\data\\attachment",
             "发送成功"
         ),
         (
             "281754043@qq.com",
             "",
             "测试发送带附件的邮件且主题为空",
-            "D:\\PytestAutoTestFrameWork\\data\\attachment",
+            "D:\\code\\pythonCode\\selenium_project\\pytest_mail_126\\data\\attachment",
             "发送成功"
         )
     ]
@@ -39,7 +39,7 @@ class SendMailData(object):
             "",
             "测试收件人地址为空",
             "测试收件人地址为空",
-            "D:\\PytestAutoTestFrameWork\\data\\attachment",
+            "D:\\code\\pythonCode\\selenium_project\\pytest_mail_126\\data\\attachment",
             "请填写收件人地址后再发送"
         )
     ]
@@ -59,7 +59,7 @@ class SendMailData(object):
             "281754043",
             "测试收件人格式不正确",
             "测试收件人格式不正确",
-            "D:\\PytestAutoTestFrameWork\\data\\attachment",
+            "D:\\code\\pythonCode\\selenium_project\\pytest_mail_126\\data\\attachment",
             "以下邮箱地址无效，将无法成功收到邮件"
         )
     ]

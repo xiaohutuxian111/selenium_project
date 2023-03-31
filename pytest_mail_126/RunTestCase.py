@@ -11,7 +11,6 @@ import pytest
 
 from util.sendMailWithReport import SendMailWithReport
 
-sys.path.append('.')
 from config.conf import ROOT_DIR, HTML_NAME
 
 
@@ -20,8 +19,7 @@ def main():
     if ROOT_DIR not in sys.path:
         sys.path.append(ROOT_DIR)
     # 执行用例
-    # ["-v", "-m", "demo", "--reruns", "2", "--reruns-delay", "5", "--alluredir=../OutPuts/allure-results"]
-    args = ['--reruns', '2', '--html=' + './report/' + HTML_NAME]
+    args = ['--reruns', '1', '--html=' + './report/' + HTML_NAME]
     pytest.main(args)
     # 发送邮件
     # SendMailWithReport.send_mail(
