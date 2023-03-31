@@ -8,7 +8,7 @@ import pytest
 from data.contact_data import ContactData
 
 
-@pytest.mark.conatctTest
+@pytest.mark.contactTest
 class TestAddContact(object):
     """添加联系人"""
     contact_data = ContactData

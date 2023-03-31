@@ -57,7 +57,7 @@ class BasePage(object):
         """判断一个元素是否存在"""
         if by.lower() in self.byDic:
             try:
-                WD(self.driver, self.outTime).until(ec.visibility_of_element_located(self.byDic[by], locator))
+                WD(self.driver, self.outTime).until(ec.visibility_of_element_located((self.byDic[by], locator)))
             except TimeoutException as t:
                 print("error:elemnt {} not exist".format(locator))
                 return False
@@ -68,7 +68,7 @@ class BasePage(object):
     def is_click(self, by, locator):
         if by.lower() in self.byDic:
             try:
-                element = WD(self.driver, self.outTime).until(ec.element_to_be_clickable(self.byDic[by], locator))
+                element = WD(self.driver, self.outTime).until(ec.element_to_be_clickable((self.byDic[by], locator)))
             except TimeoutException as t:
                 print("元素不可点击")
             else:
@@ -90,7 +90,7 @@ class BasePage(object):
         print("info:switching to  iframe {}".format(locator))
         if by.lower() in self.byDic:
             try:
-                WD(self.driver, self.outTime).until(ec.frame_to_be_available_and_switch_to_it(self.byDic[by], locator))
+                WD(self.driver, self.outTime).until(ec.frame_to_be_available_and_switch_to_it(self.byDic[by],locator))
             except TimeoutException as t:
                 print("error: found {} timeout,切换frame失败".format(locator))
         else:
@@ -173,7 +173,7 @@ class BasePage(object):
         KeyBoard.twoKeys('ctrl', 'v')
 
     @staticmethod
-    def enter_key(self):
+    def enter_key():
         """enter 回车键"""
         print("info :keydown enter")
         KeyBoard.oneKey('enter')
@@ -182,7 +182,7 @@ class BasePage(object):
         """显示等待某个元素出现，且可见"""
         print("info:waiting {} to be located".format(locator))
         try:
-            return WD(self.driver, self.outTime).until(ec.presence_of_element_located)
+            return WD(self.driver, self.outTime).until(ec.presence_of_element_located((self.byDic[by],locator)))
         except TimeoutException as t:
             print("error:foound {} timeout ".format(locator), t)
 
