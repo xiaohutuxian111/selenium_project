@@ -20,6 +20,9 @@ DATA_PATH = os.path.join(ROOT_DIR, 'data', 'testdate.xlsx')
 # 当前时间
 CURRENT_TIME = datetime.now().strftime("%H_%M_%S")
 
+# 日志存储路径
+LOG_PATH = os.path.join(ROOT_DIR,'log')
+
 # 邮件服务器
 SMTP_SERVER = 'smtp.qq.com'
 # 发送者
