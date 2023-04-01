@@ -18,7 +18,7 @@ from selenium.common.exceptions import (
 
 from util.clipboard import ClipBoard
 from util.keyBoard import KeyBoard
-from util.perseConFile import ParseConFile
+from util.parseConFile import ParseConFile
 from util.parseExcel import ParseExcel
 
 

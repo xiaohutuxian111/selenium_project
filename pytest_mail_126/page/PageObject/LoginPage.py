@@ -5,7 +5,7 @@
 @Description：登录页面
 """
 from page.BasePage import BasePage
-from util.perseConFile import ParseConFile
+from util.parseConFile import ParseConFile
 
 
 class LoginPage(BasePage):

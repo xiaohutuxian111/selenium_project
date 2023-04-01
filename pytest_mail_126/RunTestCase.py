@@ -9,6 +9,7 @@ import sys
 import pytest
 
 
+
 from util.sendMailWithReport import SendMailWithReport
 
 from config.conf import ROOT_DIR, HTML_NAME
@@ -21,11 +22,12 @@ def main():
     # 执行用例
     args = ['--reruns', '1', '--html=' + './report/' + HTML_NAME]
     pytest.main(args)
+
     # 发送邮件
     # SendMailWithReport.send_mail(
-    #     smtpServer, fromUser, fromPassWord,
-    #     toUser, subject, contents,
-    #     htmlName
+    #     smtp_server, from_user, from_pass_word,
+    #     to_user, subject, contents,
+    #     file_name
     # )
 
 

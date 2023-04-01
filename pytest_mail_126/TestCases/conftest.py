@@ -10,7 +10,7 @@ from page.PageObject.ContactPage import ContactPage
 from page.PageObject.HomePage import HomePage
 from page.PageObject.LoginPage import LoginPage
 from page.PageObject.SendMailPage import SendMailPage
-from util.perseConFile import ParseConFile
+from util.parseConFile import ParseConFile
 
 do_conf = ParseConFile()
 username = do_conf.getLocatorsOrAccount("126LoginAccount", 'username')

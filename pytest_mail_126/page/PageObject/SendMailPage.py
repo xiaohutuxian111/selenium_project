@@ -5,7 +5,7 @@
 @Description：发送邮件
 """
 from page.BasePage import BasePage
-from util.perseConFile import ParseConFile
+from util.parseConFile import ParseConFile
 
 
 class SendMailPage(BasePage):
@@ -53,13 +53,13 @@ class SendMailPage(BasePage):
         return self.send_keys(*SendMailPage.subject, subject)
 
     def upload_file(self, pfa):
-        return self.send_keys(*SendMailPage.upload_attachment.pfa)
+        return self.send_keys(*SendMailPage.upload_attachment.pfa,pfa)
 
     def switch_frame(self):
         return self.switch_to_frame(*SendMailPage.iframe)
 
     def input_main_text(self, text):
-        return self.send_keys(*SendMailPage.text)
+        return self.send_keys(*SendMailPage.text,text)
 
     def switch_default_frame(self):
         return self.switch_to_default_frame()

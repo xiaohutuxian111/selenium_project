@@ -5,7 +5,7 @@
 @Description：新建联系人
 """
 from page.BasePage import BasePage
-from util.perseConFile import ParseConFile
+from util.parseConFile import ParseConFile
 
 
 class ContactPage(BasePage):

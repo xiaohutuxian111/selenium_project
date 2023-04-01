@@ -1,5 +1,5 @@
 """
-@FileName：perseConFile.py
+@FileName：parseConFile.py
 @Author：stone
 @Time：2023/3/16 18:30
 @Description：解析.ini文件
