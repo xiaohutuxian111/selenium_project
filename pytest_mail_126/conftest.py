@@ -68,7 +68,6 @@ def _capture_screenshot():
 def driver():
     global _driver
     print('------------open browser------------')
-
     _driver = select_browser("chrom")
     yield _driver
     print('------------close browser------------')

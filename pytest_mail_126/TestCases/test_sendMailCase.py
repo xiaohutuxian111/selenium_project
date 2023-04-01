@@ -7,7 +7,7 @@
 import pytest
 
 from data.send_mail_data import SendMailData
-from page.PageObject.SendMailPage import SendMailPage
+
 
 
 @pytest.mark.sendMailTest
@@ -28,7 +28,7 @@ class TestSendMail(object):
         send_mail_page = login[3]
         home_page.select_menu(menu="homePage")
         send_mail_page.send_mail(address, subject, text, pfa)
-        send_mail_page.wait_succecc_info_element_located()
+        send_mail_page.wait_success_info_element_located()
         actual = send_mail_page.get_source()
         assert expect in actual, "发送邮件成功,断言失败"
 
@@ -47,7 +47,7 @@ class TestSendMail(object):
         send_mail_page = login[3]
         home_page.select_menu(menu="homePage")
         send_mail_page.send_mail(address, subject, text, pfa)
-        actual = send_mail_page.get_eeror_popup_window()
+        actual = send_mail_page.get_error_popup_window()
         assert expect == actual, "发送邮件成功,断言失败"
 
     @pytest.mark.parametrize("address,subject,text,pfa,expect", send_fail_subject_is_none_data)
@@ -56,7 +56,7 @@ class TestSendMail(object):
         send_mail_page = login[3]
         home_page.select_menu(menu="homePage")
         send_mail_page.send_mail(address, subject, text, pfa)
-        actual = send_mail_page.get_eeror_popup_window()
+        actual = send_mail_page.get_error_popup_window()
         assert expect == actual, "发送邮件成功,断言失败"
 
 

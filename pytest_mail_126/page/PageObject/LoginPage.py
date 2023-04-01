@@ -29,7 +29,7 @@ class LoginPage(BasePage):
     def login(self, username, password):
         """登录流程"""
         self.open_url()
-        self.click_password_login_btn()
+        # self.click_password_login_btn()
         self.switch_login_frame()
         self.input_username(username)
         self.input_password(password)

@@ -11,7 +11,6 @@ import pytest
 
 
 from util.sendMailWithReport import SendMailWithReport
-
 from config.conf import ROOT_DIR, HTML_NAME
 
 

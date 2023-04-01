@@ -41,7 +41,7 @@ class SendMailPage(BasePage):
         self.switch_frame()
         self.input_main_text(text)
         self.switch_default_frame()
-        self.click_send_btn(*SendMailPage.sendBtn)
+        self.click_send_btn()
 
     def click_write_mail_btn(self):
         return self.click(*SendMailPage.write_mail_btn)
@@ -53,7 +53,7 @@ class SendMailPage(BasePage):
         return self.send_keys(*SendMailPage.subject, subject)
 
     def upload_file(self, pfa):
-        return self.send_keys(*SendMailPage.upload_attachment.pfa,pfa)
+        return self.send_keys(*SendMailPage.upload_attachment,pfa)
 
     def switch_frame(self):
         return self.switch_to_frame(*SendMailPage.iframe)
@@ -64,12 +64,15 @@ class SendMailPage(BasePage):
     def switch_default_frame(self):
         return self.switch_to_default_frame()
 
-    def wait_succecc_info_element_located(self):
+    def click_send_btn(self):
+        return self.click(*SendMailPage.sendBtn)
+
+    def wait_success_info_element_located(self):
         return self.wait_element_to_be_located(*SendMailPage.send_success)
 
     def get_error_address_is_none(self):
         element = self.driver.find_element(*SendMailPage.error_info_address_is_none)
         return element.text
 
-    def get_eeror_popup_window(self):
+    def get_error_popup_window(self):
         return self.get_element_text(*SendMailPage.error_info_popup_window)

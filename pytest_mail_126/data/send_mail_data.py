@@ -12,21 +12,21 @@ class SendMailData(object):
 
     send_mail_success = [
         (
-            "281754043@qq.com",
+            "2398391222@qq.com",
             "测试发送普通测试邮件",
             "测试发送普通测试邮件",
             "",
             "发送成功"
         ),
         (
-            "281754043@qq.com",
+            "2398391222@qq.com",
             "测试发送带附件的邮件",
             "测试发送带附件的邮件",
             "D:\\code\\pythonCode\\selenium_project\\pytest_mail_126\\data\\attachment",
             "发送成功"
         ),
         (
-            "281754043@qq.com",
+            "2398391222@qq.com",
             "",
             "测试发送带附件的邮件且主题为空",
             "D:\\code\\pythonCode\\selenium_project\\pytest_mail_126\\data\\attachment",
@@ -46,7 +46,7 @@ class SendMailData(object):
 
     send_fail_subject_is_none_data: List[Tuple[str, str, str, str, str]] = [
         (
-            "281754043@qq.com",
+            "2398391222@qq.com",
             "",
             "测试邮件主题为空:不能添加附件",
             "",
