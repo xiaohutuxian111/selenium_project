@@ -5,7 +5,7 @@
 @Description：
 """
 import pytest
-from selenium import webdriver
+from util.browser_choose import select_browser
 from py._xmlgen import html
 
 _driver = None
@@ -68,8 +68,8 @@ def _capture_screenshot():
 def driver():
     global _driver
     print('------------open browser------------')
-    _driver = webdriver.Firefox()
-    # _driver.maximize_window()
+
+    _driver = select_browser("chrom")
     yield _driver
     print('------------close browser------------')
     _driver.quit()
