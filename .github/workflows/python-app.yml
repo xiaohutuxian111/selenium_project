@@ -32,7 +32,7 @@ jobs:
         pip install flake8 pytest
         pip install pytest-cov 
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name:  Generate coverage report 
+    - name:  生成代码覆盖率测试报告
       run: |
         coverage run --source selenium_project --parallel-mode -m pytest
         coverage combine
@@ -40,7 +40,7 @@ jobs:
         # pytest --cov=./ --cov-report=xml
       env:
         COVERAGE_RUN: True
-    - name: Upload coverage to Codecov
+    - name: 上传测试报告到Codecov
       uses: codecov/codecov-action@v3
       with: 
         token: ${{ secrets.CODECOV_TOKEN }}
