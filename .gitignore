@@ -138,13 +138,15 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-/pytest_mail_126/pytest.ini
+
 /pytest_mail_126/data/testdate.xlsx
-/pytest_mail_126/config/config.ini
 !/pytest_mail_126/.pytest_cache/
 !/pytest_mail_126/.pytest_cache/
 !/pytest_mail_126/data/login_data.py
 !/pytest_mail_126/data/send_mail_data.py
 !/pytest_mail_126/data/contact_data.py
-
 !/pytest_mail_126/report/
+
+/pytest_mail_126/test/
+
+/pytest_mail_126/log/

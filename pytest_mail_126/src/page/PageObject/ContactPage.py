@@ -4,8 +4,8 @@
 @Time：2023/3/30 19:35
 @Description：新建联系人
 """
-from page.BasePage import BasePage
-from util.parseConFile import ParseConFile
+from src.page.BasePage import BasePage
+from src.util.parseConFile import ParseConFile
 
 
 class ContactPage(BasePage):

@@ -5,7 +5,8 @@
 @Description：
 """
 import pytest
-from util.browser_choose import select_browser
+from src.util.browser_choose import select_browser
+from src.util.log import loggings
 from py._xmlgen import html
 
 _driver = None
@@ -64,11 +65,11 @@ def _capture_screenshot():
 # 这里我设置的级别是模块级别，也就是每个测试文件运行一次
 # 可以设置为session，全部用例执行一次，但是针对126邮箱的话
 # 登录次数太多会叫你验证，如果验证就没法执行用例了，我没有对验证处理（处理比较复杂）
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='function')
 def driver():
     global _driver
-    print('------------open browser------------')
+    loggings.info('------------open browser------------')
     _driver = select_browser("chrom")
     yield _driver
-    print('------------close browser------------')
+    loggings.info('------------close browser------------')
     _driver.quit()

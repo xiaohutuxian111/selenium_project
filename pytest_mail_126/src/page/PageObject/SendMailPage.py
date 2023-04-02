@@ -4,8 +4,8 @@
 @Time：2023/3/31 9:43
 @Description：发送邮件
 """
-from page.BasePage import BasePage
-from util.parseConFile import ParseConFile
+from src.page.BasePage import BasePage
+from src.util.parseConFile import ParseConFile
 
 
 class SendMailPage(BasePage):

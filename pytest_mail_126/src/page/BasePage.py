@@ -16,10 +16,12 @@ from selenium.common.exceptions import (
     NoAlertPresentException,
 )
 
-from util.clipboard import ClipBoard
-from util.keyBoard import KeyBoard
-from util.parseConFile import ParseConFile
-from util.parseExcel import ParseExcel
+from src.util.clipboard import ClipBoard
+from src.util.keyBoard import KeyBoard
+from src.util.parseConFile import ParseConFile
+from src.util.parseExcel import ParseExcel
+
+from src.util.log import loggings
 
 
 class BasePage(object):
@@ -46,10 +48,10 @@ class BasePage(object):
         :return: element object
         """
         try:
-            print('[Info:Starting find the element "{}" by "{}"!]'.format(locator, by))
+            loggings.info('Starting find the element "{}" by "{}"!'.format(locator, by))
             element = WD(self.driver, self.outTime).until(lambda x: x.find_element(by, locator))
         except TimeoutException as t:
-            print('error: found "{}" timeout!'.format(locator), t)
+            loggings.error('found "{}" timeout!'.format(locator), t)
         else:
             return element
 
@@ -61,10 +63,10 @@ class BasePage(object):
         :return: elements object
         """
         try:
-            print('[Info:start find the elements "{}" by "{}"!]'.format(locator, by))
+            loggings.info('start find the elements "{}" by "{}"!]'.format(locator, by))
             elements = WD(self.driver, self.outTime).until(lambda x: x.find_elements(by, locator))
         except TimeoutException as t:
-            print('error: found "{}" timeout!'.format(locator), t)
+            loggings.error('found "{}" timeout!'.format(locator), t)
         else:
             return elements
 
@@ -80,11 +82,11 @@ class BasePage(object):
                 WD(self.driver, self.outTime). \
                     until(ec.visibility_of_element_located((self.byDic[by], locator)))
             except TimeoutException:
-                print('Error: element "{}" not exist'.format(locator))
+                loggings.error('element "{}" not exist'.format(locator))
                 return False
             return True
         else:
-            print('the "{}" error!'.format(by))
+            loggings.error('the "{}" error!'.format(by))
 
     def is_click(self, by, locator):
         if by.lower() in self.byDic:
@@ -92,11 +94,11 @@ class BasePage(object):
                 element = WD(self.driver, self.outTime). \
                     until(ec.element_to_be_clickable((self.byDic[by], locator)))
             except TimeoutException:
-                print("元素不可以点击")
+                loggings.error("元素不可以点击")
             else:
                 return element
         else:
-            print('the "{}" error!'.format(by))
+            loggings.error('the "{}" error!'.format(by))
 
     def is_alert(self):
         """
@@ -106,29 +108,29 @@ class BasePage(object):
         try:
             re = WD(self.driver, self.outTime).until(ec.alert_is_present())
         except (TimeoutException, NoAlertPresentException):
-            print("error:no found alert")
+            loggings.error("error:no found alert")
         else:
             return re
 
     def switch_to_frame(self, by, locator):
         """判断frame是否存在，存在就跳到frame"""
-        print('info:switching to iframe "{}"'.format(locator))
+        loggings.info('switching to iframe "{}"'.format(locator))
         if by.lower() in self.byDic:
             try:
                 WD(self.driver, self.outTime). \
                     until(ec.frame_to_be_available_and_switch_to_it((self.byDic[by], locator)))
             except TimeoutException as t:
-                print('error: found "{}" timeout！切换frame失败'.format(locator), t)
+                loggings.error('found "{}" timeout！切换frame失败'.format(locator), t)
         else:
-            print('the "{}" error!'.format(by))
+            loggings.error('the "{}" error!'.format(by))
 
     def switch_to_default_frame(self):
         """返回默认的frame"""
-        print('info:switch back to default iframe')
+        loggings.info('switch back to default iframe')
         try:
             self.driver.switch_to.default_content()
         except Exception as e:
-            print(e)
+            loggings.error(e)
 
     def get_alert_text(self):
         """获取alert的提示信息"""
@@ -147,11 +149,11 @@ class BasePage(object):
             else:
                 return element.text
         except AttributeError:
-            print('get "{}" text failed return None'.format(locator))
+            loggings.error('get "{}" text failed return None'.format(locator))
 
     def load_url(self, url):
         """加载url"""
-        print('info: string upload url "{}"'.format(url))
+        loggings.info('string upload url "{}"'.format(url))
         self.driver.get(url)
 
     def get_source(self):
@@ -160,40 +162,40 @@ class BasePage(object):
 
     def send_keys(self, by, locator, value=''):
         """写数据"""
-        print('info:input "{}"'.format(value))
+        loggings.info('input "{}"'.format(value))
         try:
             element = self.find_element(by, locator)
             element.send_keys(value)
         except AttributeError as e:
-            print(e)
+            loggings.error(e)
 
     def clear(self, by, locator):
         """清理数据"""
-        print('info:clearing value')
+        loggings.info('clearing value')
         try:
             element = self.find_element(by, locator)
             element.clear()
         except AttributeError as e:
-            print(e)
+            loggings.error(e)
 
     def click(self, by, locator):
         """点击某个元素"""
-        print('info:click "{}"'.format(locator))
+        loggings.info('click "{}"'.format(locator))
         element = self.is_click(by, locator)
         if element:
             element.click()
         else:
-            print('the "{}" unclickable!')
+            loggings.error('the "{}" unclickable!'.format(locator))
 
     @staticmethod
     def sleep(num=0):
         """强制等待"""
-        print('info:sleep "{}" minutes'.format(num))
+        loggings.info('sleep "{}" minutes'.format(num))
         time.sleep(num)
 
     def ctrl_v(self, value):
         """ctrl + V 粘贴"""
-        print('info:pasting "{}"'.format(value))
+        loggings.info('pasting "{}"'.format(value))
         ClipBoard.set_text(value)
         self.sleep(3)
         KeyBoard.two_keys('ctrl', 'v')
@@ -201,16 +203,16 @@ class BasePage(object):
     @staticmethod
     def enter_key():
         """enter 回车键"""
-        print('info:keydown enter')
+        loggings.info('keydown enter')
         KeyBoard.one_key('enter')
 
     def wait_element_to_be_located(self, by, locator):
         """显示等待某个元素出现，且可见"""
-        print('info:waiting "{}" to be located'.format(locator))
+        loggings.info('waiting "{}" to be located'.format(locator))
         try:
             return WD(self.driver, self.outTime).until(ec.presence_of_element_located((self.byDic[by], locator)))
         except TimeoutException as t:
-            print('error: found "{}" timeout！'.format(locator), t)
+            loggings.error('found "{}" timeout！'.format(locator), t)
 
     def get_page_source(self):
         return self.get_source()

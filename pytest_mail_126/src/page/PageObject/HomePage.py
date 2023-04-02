@@ -5,8 +5,8 @@
 @Description：邮箱首页
 """
 
-from page.BasePage import BasePage
-from util.parseConFile import ParseConFile
+from src.page.BasePage import BasePage
+from src.util.parseConFile import ParseConFile
 
 
 class HomePage(BasePage):

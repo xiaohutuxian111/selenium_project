@@ -4,8 +4,8 @@
 @Time：2023/3/30 20:07
 @Description：登录页面
 """
-from page.BasePage import BasePage
-from util.parseConFile import ParseConFile
+from src.page.BasePage import BasePage
+from src.util.parseConFile import ParseConFile
 
 
 class LoginPage(BasePage):

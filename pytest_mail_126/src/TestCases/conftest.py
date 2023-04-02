@@ -6,11 +6,12 @@
 """
 import pytest
 
-from page.PageObject.ContactPage import ContactPage
-from page.PageObject.HomePage import HomePage
-from page.PageObject.LoginPage import LoginPage
-from page.PageObject.SendMailPage import SendMailPage
-from util.parseConFile import ParseConFile
+from src.page.PageObject import ContactPage
+from src.page.PageObject.HomePage import HomePage
+from src.page.PageObject.LoginPage import LoginPage
+from src.page.PageObject import SendMailPage
+from src.util.parseConFile import ParseConFile
+from src.util.log import loggings
 
 do_conf = ParseConFile()
 username = do_conf.getLocatorsOrAccount("126LoginAccount", 'username')
@@ -39,11 +40,11 @@ def login(ini_pages):
     """除了登录用例是每一个用例的前置用例"""
 
     driver, login_page, home_page, contact_page, send_mail_page = ini_pages
-    print("--------------------start login------------")
+    loggings.info("--------------------start login------------")
     login_page.login(username, password)
     login_page.switch_to_default_frame()
     yield login_page, home_page, contact_page, send_mail_page
-    print("-------------------end login-------------------")
+    loggings.info("-------------------end login-------------------")
     driver.delete_all_cookies()
 
 
