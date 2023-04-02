@@ -5,9 +5,11 @@
 @Description：添加联系人功能
 """
 import pytest
+import allure
 from data.contact_data import ContactData
 
 
+@allure.feature("新建联系人")
 @pytest.mark.contactTest
 class TestAddContact(object):
     """添加联系人"""
@@ -16,6 +18,7 @@ class TestAddContact(object):
     success_data = contact_data.add_contact_success
     fail_data = contact_data.add_contact_fail
 
+    @allure.story("新建联系人成功")
     @pytest.mark.parametrize("name,mail,star,phone,comment,expect", success_data)
     def test_add_contact_success(self, login, refresh_page, name, mail, star, phone, comment, expect):
         """测试添加联系人"""
@@ -26,6 +29,7 @@ class TestAddContact(object):
         actual = contact_page.get_source()
         assert expect in actual, "添加联系人成功,断言失败"
 
+    @allure.story("新建联系人失败")
     @pytest.mark.parametrize('name,mail,star,hone,comment,expect', fail_data)
     def test_add_contact_fail(self, login, refresh_page, name, mail, star, hone, comment, expect):
         home_page = login[1]

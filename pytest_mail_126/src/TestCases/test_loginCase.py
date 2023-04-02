@@ -4,16 +4,18 @@
 @Time：2023/3/28 15:29
 @Description：测试登录功能
 """
-
+import allure
 import pytest
 from data.login_data import LoginData
 
 
+@allure.feature("登录")
 @pytest.mark.loginTest
 class TestLogin(object):
     """登录测试"""
     login_data = LoginData
 
+    @allure.story("登录成功")
     @pytest.mark.parametrize('username,password,expect', login_data.login_success_data)
     def test_login(self, open_url, username, password, expect):
         login_page = open_url
@@ -22,6 +24,7 @@ class TestLogin(object):
         actual = login_page.get_login_success()
         assert expect in actual, "登录成功,断言失败"
 
+    @allure.story("登录失败")
     @pytest.mark.parametrize('username,password,expect', login_data.login_fail_data)
     def test_fail(self, open_url, username, password, expect):
         login_page = open_url

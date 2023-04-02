@@ -17,7 +17,6 @@ def firefox_setting():
     profile.set_preference('useAutomationExtension', False)  # 关闭自动化提示
     profile.update_preferences()  # 更新设置
     # 将日志重定向
-
     # driver = webdriver.Firefox(firefox_options=options, firefox_profile=profile, log_path=LOG_PATH)
     driver = webdriver.Firefox(firefox_options=options, firefox_profile=profile)
     driver.maximize_window()

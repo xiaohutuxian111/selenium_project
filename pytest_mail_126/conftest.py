@@ -65,12 +65,12 @@ def _capture_screenshot():
 # 这里我设置的级别是模块级别，也就是每个测试文件运行一次
 # 可以设置为session，全部用例执行一次，但是针对126邮箱的话
 # 登录次数太多会叫你验证，如果验证就没法执行用例了，我没有对验证处理（处理比较复杂）
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='module')
 def driver():
     global _driver
     loggings.info('------------open browser------------')
-    _driver = select_browser("firefox")
+    _driver = select_browser("chrome")
     loggings.info("driver: {}".format(_driver))
     yield _driver
     loggings.info('------------close browser------------')
-    _driver.quit()
+    # _driver.quit()

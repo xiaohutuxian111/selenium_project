@@ -212,7 +212,7 @@ class BasePage(object):
         try:
             return WD(self.driver, self.outTime).until(ec.presence_of_element_located((self.byDic[by], locator)))
         except TimeoutException as t:
-            loggings.error('found "{}" timeout！'.format(locator), t)
+            loggings.error('found "{}" timeout！{}'.format(locator, t))
 
     def get_page_source(self):
         return self.get_source()

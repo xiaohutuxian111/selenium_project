@@ -4,12 +4,13 @@
 @Time：2023/3/28 16:54
 @Description:发送邮件测试案例
 """
+import allure
 import pytest
 
 from data.send_mail_data import SendMailData
 
 
-
+@allure.feature("发送邮件")
 @pytest.mark.sendMailTest
 class TestSendMail(object):
     """发送邮件"""
@@ -21,6 +22,7 @@ class TestSendMail(object):
     send_fail_address_is_invalid_data = mail_data.send_fail_address_is_invalid_data
     send_fail_subject_is_none_data = mail_data.send_fail_subject_is_none_data
 
+    @allure.story("成功发送邮件")
     @pytest.mark.sendmail
     @pytest.mark.parametrize("address,subject,text,pfa,expect", send_success_data)
     def test_send_mail_success(self, login, address, subject, text, pfa, expect):
@@ -32,6 +34,7 @@ class TestSendMail(object):
         actual = send_mail_page.get_source()
         assert expect in actual, "发送邮件成功,断言失败"
 
+    @allure.story("邮件地址为空,发送邮件失败")
     @pytest.mark.parametrize("address,subject,text,pfa,expect", send_fail_address_is_none_data)
     def test_fail_address_is_none_data(self, login, address, subject, text, pfa, expect):
         home_page = login[1]
@@ -41,6 +44,7 @@ class TestSendMail(object):
         actual = send_mail_page.get_error_address_is_none()
         assert expect == actual, "发送邮件成功,断言失败"
 
+    @allure.story("邮件地址无效,发送邮件失败")
     @pytest.mark.parametrize("address,subject,text,pfa,expect", send_fail_address_is_invalid_data)
     def test_fail_address_is_invalid_data(self, login, address, subject, text, pfa, expect):
         home_page = login[1]
@@ -50,6 +54,7 @@ class TestSendMail(object):
         actual = send_mail_page.get_error_popup_window()
         assert expect == actual, "发送邮件成功,断言失败"
 
+    @allure.story("邮件主题为空,发送邮件失败")
     @pytest.mark.parametrize("address,subject,text,pfa,expect", send_fail_subject_is_none_data)
     def test_fail_subject_is_none_data(self, login, address, subject, text, pfa, expect):
         home_page = login[1]

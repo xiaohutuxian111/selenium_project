@@ -36,7 +36,7 @@ class LoginPage(BasePage):
         self.click_login_btn()
 
     def open_url(self):
-        return self.load_url('https://www.baidu.com')
+        return self.load_url('https://mail.126.com')
 
     def click_password_login_btn(self):
         return self.click(*LoginPage.password_login_btn)

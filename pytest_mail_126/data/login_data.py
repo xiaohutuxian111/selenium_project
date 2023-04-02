@@ -11,7 +11,7 @@ class LoginData(object):
     login_success_data = [
         (
             "defoliationfly@126.com",
-            "wang@123456",
+            "",
             "defoliationfly@126.com"
         )
     ]

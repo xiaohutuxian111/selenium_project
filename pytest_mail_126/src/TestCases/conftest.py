@@ -6,10 +6,10 @@
 """
 import pytest
 
-from src.page.PageObject import ContactPage
+from src.page.PageObject.ContactPage import ContactPage
 from src.page.PageObject.HomePage import HomePage
 from src.page.PageObject.LoginPage import LoginPage
-from src.page.PageObject import SendMailPage
+from src.page.PageObject.SendMailPage import SendMailPage
 from util.parseConFile import ParseConFile
 from util.log import loggings
 
@@ -18,7 +18,7 @@ username = do_conf.getLocatorsOrAccount("126LoginAccount", 'username')
 password = do_conf.getLocatorsOrAccount("126LoginAccount", 'password')
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='class')
 def ini_pages(driver):
     login_page = LoginPage(driver)
     home_page = HomePage(driver)

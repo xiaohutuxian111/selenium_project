@@ -12,21 +12,21 @@ class SendMailData(object):
 
     send_mail_success = [
         (
-            "2398391222@qq.com",
+            "2398391057@qq.com",
             "测试发送普通测试邮件",
             "测试发送普通测试邮件",
             "",
             "发送成功"
         ),
         (
-            "2398391222@qq.com",
+            "2398391057@qq.com",
             "测试发送带附件的邮件",
             "测试发送带附件的邮件",
             "D:\\code\\pythonCode\\selenium_project\\pytest_mail_126\\data\\attachment",
             "发送成功"
         ),
         (
-            "2398391222@qq.com",
+            "2398391057@qq.com",
             "",
             "测试发送带附件的邮件且主题为空",
             "D:\\code\\pythonCode\\selenium_project\\pytest_mail_126\\data\\attachment",
