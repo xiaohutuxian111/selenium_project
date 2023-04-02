@@ -9,19 +9,30 @@
 import os
 from datetime import datetime
 
+
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 # 报告目录
 REPORT_DIR = os.path.join(ROOT_DIR, 'report')
+
+
 # ui对象库所在的文件目录
 CONF_PATH = os.path.join(ROOT_DIR, 'config', 'config.ini')
+
 # 测试数据所在的库
 DATA_PATH = os.path.join(ROOT_DIR, 'data', 'testdate.xlsx')
-# 当前时间
-CURRENT_TIME = datetime.now().strftime("%H_%M_%S")
+
 
 # 日志存储路径
 LOG_PATH = os.path.join(ROOT_DIR,'log')
+
+# 当前时间
+CURRENT_TIME = datetime.now().strftime("%H_%M_%S")
+
+
+
+
 
 # 邮件服务器
 SMTP_SERVER = 'smtp.qq.com'

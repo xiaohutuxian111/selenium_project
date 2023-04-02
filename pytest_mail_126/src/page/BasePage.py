@@ -16,12 +16,12 @@ from selenium.common.exceptions import (
     NoAlertPresentException,
 )
 
-from src.util.clipboard import ClipBoard
-from src.util.keyBoard import KeyBoard
-from src.util.parseConFile import ParseConFile
-from src.util.parseExcel import ParseExcel
+from util.clipboard import ClipBoard
+from util.keyBoard import KeyBoard
+from util.parseConFile import ParseConFile
+from util.parseExcel import ParseExcel
 
-from src.util.log import loggings
+from util.log import loggings
 
 
 class BasePage(object):

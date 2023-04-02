@@ -10,15 +10,15 @@ from src.page.PageObject import ContactPage
 from src.page.PageObject.HomePage import HomePage
 from src.page.PageObject.LoginPage import LoginPage
 from src.page.PageObject import SendMailPage
-from src.util.parseConFile import ParseConFile
-from src.util.log import loggings
+from util.parseConFile import ParseConFile
+from util.log import loggings
 
 do_conf = ParseConFile()
 username = do_conf.getLocatorsOrAccount("126LoginAccount", 'username')
 password = do_conf.getLocatorsOrAccount("126LoginAccount", 'password')
 
 
-@pytest.fixture(scope='class')
+@pytest.fixture(scope='function')
 def ini_pages(driver):
     login_page = LoginPage(driver)
     home_page = HomePage(driver)
@@ -38,7 +38,6 @@ def open_url(ini_page):
 @pytest.fixture(scope='class')
 def login(ini_pages):
     """除了登录用例是每一个用例的前置用例"""
-
     driver, login_page, home_page, contact_page, send_mail_page = ini_pages
     loggings.info("--------------------start login------------")
     login_page.login(username, password)

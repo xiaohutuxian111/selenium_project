@@ -6,7 +6,7 @@
 """
 
 from src.page.BasePage import BasePage
-from src.util.parseConFile import ParseConFile
+from util.parseConFile import ParseConFile
 
 
 class HomePage(BasePage):

@@ -5,8 +5,6 @@
 @Description：基于loguru日志工具
 """
 
-from config.conf import LOG_PATH
-
 # class Log(object):
 #     """编写日志类，供其他模块调用"""
 #
@@ -40,17 +38,18 @@ from config.conf import LOG_PATH
 #
 #     def get_log(self):
 #         return self.logger
-
+import os
 
 """操作日志记录
 """
 import time
 from loguru import logger
-
+from config.conf import LOG_PATH
 
 
 
 t = time.strftime("%Y_%m_%d")
+
 
 
 class Loggings:

@@ -5,7 +5,7 @@
 @Description：登录页面
 """
 from src.page.BasePage import BasePage
-from src.util.parseConFile import ParseConFile
+from util.parseConFile import ParseConFile
 
 
 class LoginPage(BasePage):
@@ -36,7 +36,7 @@ class LoginPage(BasePage):
         self.click_login_btn()
 
     def open_url(self):
-        return self.load_url('https://mail.126.com')
+        return self.load_url('https://www.baidu.com')
 
     def click_password_login_btn(self):
         return self.click(*LoginPage.password_login_btn)
